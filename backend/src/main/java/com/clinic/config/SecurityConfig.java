@@ -31,6 +31,7 @@ public class SecurityConfig {
             .requestMatchers("/api/auth/**").permitAll()
 //            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**", "/api/debug-db").permitAll()
+            .requestMatchers(HttpMethod.POST, "/api/debug-insert-doctor").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

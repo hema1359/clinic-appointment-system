@@ -85,4 +85,16 @@ public class PatientController {
         long count = doctorRepository.count();
         return ResponseEntity.ok("Doctor count seen by this running app: " + count);
     }
+    
+    @PostMapping("/debug-insert-doctor")
+    public ResponseEntity<?> debugInsertDoctor() {
+        com.clinic.model.Doctor doc = new com.clinic.model.Doctor();
+        doc.setSpecialization("TestSpecialization");
+        doc.setExperienceYears(5);
+        doc.setQualification("Test");
+        doc.setAvailableDays("Mon");
+        doc.setConsultationFee(50.0);
+        doctorRepository.save(doc);
+        return ResponseEntity.ok("Inserted. New count: " + doctorRepository.count());
+    }
 }
