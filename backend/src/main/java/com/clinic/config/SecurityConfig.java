@@ -29,7 +29,8 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
             .authorizeHttpRequests()
             .requestMatchers("/api/auth/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**").permitAll()
+//            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**", "/api/debug-db").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
