@@ -11,9 +11,9 @@ backend/mvnw
 backend/mvnw.cmd
 
 # Secrets - DO NOT COMMIT
-application.properties
+# application.properties
 application.yml
-backend/src/main/resources/application.properties
+# backend/src/main/resources/application.properties
 backend/src/main/resources/application.yml
 .env
 frontend/.env
