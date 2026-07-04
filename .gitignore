@@ -1,0 +1,48 @@
+# ---------- Frontend (Node/Vite) ----------
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# ---------- Backend (Spring Boot / Maven) ----------
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Secrets - DO NOT COMMIT
+application.properties
+application.yml
+backend/src/main/resources/application.properties
+backend/src/main/resources/application.yml
+.env
+frontend/.env
+backend/.env
+
+# ---------- IDE files ----------
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# ---------- OS files ----------
+.DS_Store
+Thumbs.db
+
+# ---------- Logs ----------
+*.log
+
+# ---------- Temp/debug files ----------
+.tmp-bcrypt/
+backend/compile_output.txt
+backend/compile_output_args.txt
+backend/compile_status.txt
+backend/compile_status_args.txt
+backend/javac.args
+backend/javac2.args
+backend/javac2_first10.txt
+backend/javac2_last10.txt
+backend/javac_last40.txt
+backend/temp_patch.txt

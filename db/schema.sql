@@ -1,0 +1,46 @@
+-- MySQL schema for Clinic Appointment Booking System
+CREATE DATABASE IF NOT EXISTS clinic_db;
+USE clinic_db;
+
+CREATE TABLE users (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  phone VARCHAR(50),
+  role ENUM('PATIENT','DOCTOR','ADMIN') NOT NULL DEFAULT 'PATIENT',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE doctors (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  specialization VARCHAR(150),
+  experience_years INT,
+  qualification VARCHAR(255),
+  available_days VARCHAR(255),
+  consultation_fee DECIMAL(10,2),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE time_slots (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  doctor_id BIGINT NOT NULL,
+  slot_date DATE NOT NULL,
+  slot_time TIME NOT NULL,
+  is_booked BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE appointments (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  patient_id BIGINT NOT NULL,
+  doctor_id BIGINT NOT NULL,
+  slot_id BIGINT NOT NULL,
+  status ENUM('PENDING','CONFIRMED','CANCELLED','COMPLETED') DEFAULT 'PENDING',
+  reason VARCHAR(500),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE,
+  FOREIGN KEY (slot_id) REFERENCES time_slots(id) ON DELETE CASCADE
+);
