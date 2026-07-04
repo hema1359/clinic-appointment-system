@@ -79,4 +79,10 @@ public class PatientController {
         appointmentRepository.save(ap);
         return ResponseEntity.ok(ap);
     }
+    
+    @GetMapping("/debug-db")
+    public ResponseEntity<?> debugDb() {
+        long count = doctorRepository.count();
+        return ResponseEntity.ok("Doctor count seen by this running app: " + count);
+    }
 }
