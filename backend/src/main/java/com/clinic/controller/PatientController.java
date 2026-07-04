@@ -97,4 +97,11 @@ public class PatientController {
         doctorRepository.save(doc);
         return ResponseEntity.ok("Inserted. New count: " + doctorRepository.count());
     }
+    
+    @GetMapping("/debug-env")
+    public ResponseEntity<?> debugEnv() {
+        String url = System.getenv("DB_URL");
+        String user = System.getenv("DB_USERNAME");
+        return ResponseEntity.ok("DB_URL=[" + url + "] DB_USERNAME=[" + user + "]");
+    }
 }

@@ -30,7 +30,7 @@ public class SecurityConfig {
             .authorizeHttpRequests()
             .requestMatchers("/api/auth/**").permitAll()
 //            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**", "/api/debug-db").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/doctors", "/api/doctors/**","/api/debug-db", "/api/debug-env").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/debug-insert-doctor").permitAll()
             .anyRequest().authenticated()
             .and()
